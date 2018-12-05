@@ -1,15 +1,12 @@
+# _*_ coding: utf-8 _*_
+# @Author: Diane
+# @Time  : 2018/12/4 17:06
+# @File  : useNltk.py
+# @Goal  测试word2vec 寻找personal相似的单词
 from gensim.models import word2vec
-import warnings
-warnings.filterwarnings(action='ignore',category=UserWarning,module='gensim')
-class Mysentences(object):
-    def __init__(self,fname):
-        self.fname = fname
-    def __iter__(self):
-        for line in open(self.fname,'r'):
-            yield line.split()
-
+from word2vec.my_sentences import MySentences
 def w2vTrain(f_input,model_output):
-    sentences = Mysentences(DataDir+f_input)
+    sentences = MySentences(DataDir+f_input)
     w2vmodel = word2vec.Word2Vec(sentences,min_count=MIN_COUNT,workers=CPU_NUM,size=VEC_SIZE,window=CONTEXT_WINDOW)
     w2vmodel.save(ModelDir+model_output)
 
