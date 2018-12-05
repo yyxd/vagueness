@@ -1,4 +1,6 @@
 from gensim.models import word2vec
+import warnings
+warnings.filterwarnings(action='ignore',category=UserWarning,module='gensim')
 class Mysentences(object):
     def __init__(self,fname):
         self.fname = fname
